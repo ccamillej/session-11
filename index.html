@@ -76,8 +76,10 @@
 
           <!-- Résultat -->
           <p class="lead mt-2" v-if="success === true">Bien vu ! Réputé pour ses couloirs sans fins, jalonnés de zig-zag de marches, le métro s’apparente parfois à un réel parcours du combattant, autant pour les personnes à mobilité réduite que âgées ou avec poussette. Aujourd’hui, seulement 3% du métro parisien -les 9 stations de la ligne 14- sont certifiées accessibles.
+            <a href="index2.html">Cliquez ici pour en savoir plus!</a>
 </p>
           <p class="lead mt-2" v-if="success === false">Raté ! Réputé pour ses couloirs sans fins, jalonnés de zig-zag de marches, le métro s’apparente parfois à un réel parcours du combattant, autant pour les personnes à mobilité réduite que âgées ou avec poussette. Aujourd’hui, seulement 3% du métro parisien -les 9 stations de la ligne 14- sont certifiées accessibles.
+            <a href="index2.html">Cliquez ici pour en savoir plus!</a>
  <span v-if="!step.choices">La réponse était {{ step.answer }}</span></p>
           
 
@@ -93,58 +95,6 @@
   <script src="./quiz.js"></script> <!-- Ce script contient toutes les questions du quiz -->
   <script src="./app.js"></script>
 <br>
-   <button class="accordion text-center">Si ça vous intéresse d'en savoir plus sur l'accessibilité dans les grandes villes, cliquez-ici.</button>
-<div class="panel">
-
-        <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col"class="text-center">Pays</th>
-          <th scope="col"class="text-center">Ville</th>
-          <th scope="col" class="text-center">Pourcentage d'accessibilité</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td >Espagne</td>
-          <td>Taiwan</td>
-          <td>Royaume-Uni</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Barcelone</td>
-          <td>Taipei</td>
-          <td>XXX</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>XXX</td>
-          <td>XXX</td>
-          <td>xxx</td>
-        </tr>
-      </tbody>
-    </table>
-    <h6 class="text-right">Source: xxx, xxx, xxx </h6>
-</div>
-
-<script>
-var acc = document.getElementsByClassName("accordion");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
-        }
-    });
-}
-</script>
 
     <script src="vendors/vue.min.js"></script>
     <script src="index.js"> 
