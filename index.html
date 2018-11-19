@@ -52,32 +52,70 @@
 </div>
     </div>
     <br>
-    <h4 class="text-center">Selon-vous, à quel point le métro parisien est-il accessible?</h4>
+    <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 bg-white text-black">
     <br>
-    <h6 class="text-center"> Insérer quiz sur <u>l'accessibilité de Paris</u> ici </h6>
-   <button class="accordion">Si ça vous intéresse d'en savoir plus sur l'accessibilité dans les grandes villes, cliquez-ici.</button>
+    <p class="text-center"> L’attribution des Jeux Olympiques et Paralympiques de 2024 à la ville de Paris a fait renaître les espoirs des personnes handicapées de voir un métro plus accessible circuler dans la capitale.</p>
+<div id="app" class="container">
+
+
+    <!-- Carte principale -->
+    <main class="d-flex align-items-center justify-content-md-center" v-cloak>
+      <div class="card">
+
+        <!-- Carte lorsqu'il y a des questions -->
+        <div class="card-body" v-if="current < quiz.length">
+          <h4 class="card-title">{{ step.question }}</h4>
+
+          <!-- Boutons pour les QCM -->
+          <button v-if="step.choices" v-for="choice in step.choices" class="btn btn-lg btn-block" :class="buttonClasses(choice)" v-on:click="submitButton(choice)" :disabled="success === false">{{ choice }}</button>
+
+          <!-- Champ de saisie pour les réponses libres -->
+          <input type="text" ref="textInput" v-if="!step.choices" class="form-control" :class="{'is-valid': success === true, 'is-invalid': success === false}" placeholder="Écrivez votre réponse" v-on:keyup.enter="submitText()"  :disabled="success === false">
+
+          <!-- Résultat -->
+          <p class="lead mt-2" v-if="success === true">Bien vu ! Réputé pour ses couloirs sans fins, jalonnés de zig-zag de marches, le métro s’apparente parfois à un réel parcours du combattant, autant pour les personnes à mobilité réduite que âgées ou avec poussette. Aujourd’hui, seulement 3% du métro parisien -les 9 stations de la ligne 14- sont certifiées accessibles.
+</p>
+          <p class="lead mt-2" v-if="success === false">Raté ! Réputé pour ses couloirs sans fins, jalonnés de zig-zag de marches, le métro s’apparente parfois à un réel parcours du combattant, autant pour les personnes à mobilité réduite que âgées ou avec poussette. Aujourd’hui, seulement 3% du métro parisien -les 9 stations de la ligne 14- sont certifiées accessibles.
+ <span v-if="!step.choices">La réponse était {{ step.answer }}</span></p>
+          
+
+        <!-- Carte lorsque toutes les questions ont été complétées -->
+        <div class="card-body" v-if="current == quiz.length">
+          <h4 class="card-title">Vous avez terminé !</h4>
+          <p class="card-text">Affiche le score ici !</p>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="./quiz.js"></script> <!-- Ce script contient toutes les questions du quiz -->
+  <script src="./app.js"></script>
+<br>
+   <button class="accordion text-center">Si ça vous intéresse d'en savoir plus sur l'accessibilité dans les grandes villes, cliquez-ici.</button>
 <div class="panel">
 
         <table class="table table-striped">
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col"class="text-center">Ville</th>
           <th scope="col"class="text-center">Pays</th>
+          <th scope="col"class="text-center">Ville</th>
           <th scope="col" class="text-center">Pourcentage d'accessibilité</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <th scope="row">1</th>
-          <td >XXXX</td>
-          <td>XXX</td>
-          <td>XXX</td>
+          <td >Espagne</td>
+          <td>Taiwan</td>
+          <td>Royaume-Uni</td>
         </tr>
         <tr>
           <th scope="row">2</th>
-          <td>XXX</td>
-          <td>XXX</td>
+          <td>Barcelone</td>
+          <td>Taipei</td>
           <td>XXX</td>
         </tr>
         <tr>
@@ -88,6 +126,7 @@
         </tr>
       </tbody>
     </table>
+    <h6 class="text-right">Source: xxx, xxx, xxx </h6>
 </div>
 
 <script>
